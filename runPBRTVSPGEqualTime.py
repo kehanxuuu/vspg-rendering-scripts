@@ -6,11 +6,15 @@ import utils.ResultsViewer as ResultsViewer
 
 # path to the PBRT installation (e.g., folder or a soft link to it)
 pbrt_dir = "./pbrt-renderer/"
+
+# name of the experiment and the folders
+experiment_name = 'vspg-equal-time'
+
 # path to store the results
-results_dir = "./pbrt-results/vspgguiding-slides-v8-spp32"
+results_dir = "./pbrt-results/" + experiment_name
 
 # path to store the post-processed results and the HTML viewer
-viewer_output_dir = "./pbrt-viewers/vspgguiding-slides-v8-spp32"
+viewer_output_dir = "./pbrt-viewers/"  + experiment_name
 
 # Loading the test case descriptions from a file
 testCases = TestCaseHelper.loadTestCases("pbrt-testcases/vspg")
@@ -22,12 +26,14 @@ testCaseDescription = TestCaseHelper.loadTestCaseDescription("pbrt-testcases/vsp
 # Setup the PBRT renderer
 pbrt = PBRTRenderer.PBRTRenderer(pbrt_dir, results_dir, scenes_dir)
 
+# equal-time experiments, read time from the scene config
+
 #for each scene and each scene variant
-for scene, scene_variants, resolution in scenes:
+for scene, scene_variants, resolution, time in scenes:
     for variant in scene_variants:
         #run each test case defined in the test cases file
         for testCase in testCases:    
-            pbrt.runTestCase(scene, variant, resolution, testCase, spp = 32, stats = True, usedGuidedGBuffer = False)
+            pbrt.runTestCase(scene, variant, resolution, testCase, budget = time, equal_spp = False, stats = True, usedGuidedGBuffer = False)
 
 #after running all test cases for all scenes prepare the results in an interactive HTML viewer 
 viewer = ResultsViewer.ResultsViewer("./utils/webviewer")

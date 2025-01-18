@@ -7,15 +7,21 @@ class PBRTRenderer:
         self.results_dir = results_dir
         self.scenes_dir = scenes_dir
 
-        os.environ['LD_LIBRARY_PATH'] = os.environ['LD_LIBRARY_PATH'] + ":" + self.pbrt_install_dir +"lib"
+        os.environ['LD_LIBRARY_PATH'] = os.environ['LD_LIBRARY_PATH'] + ":" + self.pbrt_install_dir +"lib" + ":" + self.pbrt_install_dir +"lib64"
         os.environ['PATH'] = os.environ['PATH'] + ":" + self.pbrt_install_dir +"bin"
 
         make_safe_dir(self.results_dir)
 
-    def runTestCase(self, scene, scene_variant, resolution, test_case, spp = 64, stats = False, usedGuidedGBuffer = False):
+    def runTestCase(self, scene, scene_variant, resolution, test_case, budget = 64, equal_spp = True, stats = False, usedGuidedGBuffer = False):
         make_safe_dir(self.results_dir + "/" + scene + scene_variant)
+        
+        budgetType = "spp" if equal_spp else "time"
 
         outFile = self.results_dir + "/" + scene + scene_variant + "/" + scene + scene_variant + "-" + test_case.name + ".exr"
+        
+        if os.path.exists(outFile):
+            print('WARNING: ', outFile, ' already exists')
+            return
 
         parameters = copy.deepcopy(test_case.parameters)
         for parameter in parameters:
@@ -44,9 +50,9 @@ class PBRTRenderer:
         if stats:
             command += " --stats "
         #command += " --nthreads " + str(1)
-        command += " --spp " + str(spp)
+        command += f" --{budgetType} {budget}"
         command += " --outfile " + str(outFile)
-        command += " > " + outFile.replace(".exr", ".log")
+        command += " 2>&1 | tee " + outFile.replace(".exr", ".log")
         print(command)
         os.system(command)
 
@@ -58,7 +64,7 @@ class PBRTRenderer:
         command += " " + sceneFile
         command += " --spp " + str(spp)
         command += " --outfile " + str(outfile)
-        command += " > " + outfile.replace(".exr", ".log")
+        command += " 2>&1 | tee " + outfile.replace(".exr", ".log")
         print(command)
         os.system(command)
 

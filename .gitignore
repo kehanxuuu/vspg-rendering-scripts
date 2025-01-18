@@ -10,4 +10,6 @@ mitsuba-scenes
 pbrt-scenes
 blender-scenes
 
+pbrt-renderer
+
 __pycache__
