@@ -9,7 +9,7 @@ It is an extension of the [rendering scripts](https://github.com/sherholz/render
 
 # Instructions
 
-* Build and install the [renderer code](https://github.com/kehanxuuu/vspg-scenes/), then create a hyperlink in the root directory named `pbrt-renderer` pointing to the `install` folder.
+* Build and install the [renderer code](https://github.com/kehanxuuu/vspg-pbrt-v4/), then create a hyperlink in the root directory named `pbrt-renderer` pointing to the `install` folder.
 
 * Download the [scenes](https://github.com/kehanxuuu/vspg-scenes/), then create a hyperlink in the root directory named `pbrt-scenes` pointing to this folder.
 
