@@ -27,6 +27,8 @@ test_cases = {
     
     "delta_tracking" : {
         "parameters" : {
+            "surfaceguiding" : ["bool", False],
+            "volumeguiding" : ["bool", False],
         },
         "description" : "delta tracking",
     },
