@@ -11,6 +11,7 @@ common_parameters = {
     "usenee" : ["bool", True],
     "surfaceguiding" : ["bool", False],
     "volumeguiding" : ["bool", False],
+    "vspguiding" : ["bool", False],
 }
 
 test_cases = {
@@ -29,6 +30,7 @@ test_cases = {
         "parameters" : {
             "surfaceguiding" : ["bool", False],
             "volumeguiding" : ["bool", False],
+            "vspguiding" : ["bool", False],
         },
         "description" : "delta tracking",
     },
@@ -37,6 +39,7 @@ test_cases = {
         "parameters" : {
             "surfaceguiding" : ["bool", True],
             "volumeguiding" : ["bool", True],
+            "vspguiding" : ["bool", False],
         },
         "description" : "directional guiding for surface and volume",
     },
@@ -81,7 +84,6 @@ test_cases = {
             "vspsamplingmethod" : ["string", "resampling"],
             "vspmisratio" : ["float", 0.75],
             "vspcriterion" : ["string", "contribution"],
-            "vspmisratio" : ["float", 0.75],
             # "storeISGBuffer" : ["bool", True],
             # "isgBufferFileName" : ["string", "$SCENE$-buffer-vspg_resampling_contrib.exr"],
         },
@@ -96,7 +98,6 @@ test_cases = {
             "vspsamplingmethod" : ["string", "resampling"],
             "vspmisratio" : ["float", 0.75],
             "vspcriterion" : ["string", "variance"],
-            "vspmisratio" : ["float", 0.75],
             # "storeISGBuffer" : ["bool", True],
             # "isgBufferFileName" : ["string", "$SCENE$-buffer-vspg_resampling_variance.exr"],
         },
