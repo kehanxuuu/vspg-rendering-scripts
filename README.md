@@ -5,7 +5,13 @@
 
 This repository contains scripts to generate the renderings in the paper and the [supplementary viewer](https://kehanxuuu.github.io/vspg-website/vspg-supplemental/index.html).
 
-It is an extension of Sebastian Herholz's [rendering scripts](https://github.com/sherholz/rendering-scripts). Please refer to its documentation for the dependencies.
+It is an extension of Sebastian Herholz's [rendering scripts](https://github.com/sherholz/rendering-scripts).
+
+# Dependencies
+
+``` bash
+pip install simpleimageio opencv-python numpy
+```
 
 # Instructions
 
