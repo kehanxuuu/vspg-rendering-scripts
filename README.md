@@ -1,5 +1,5 @@
 # Rendering scripts for the paper "Volume Scattering Probability Guiding"
-### [Project Page](https://kehanxuuu.github.io/vspg-website/) | [Paper](https://kehanxuuu.github.io/vspg-website/static/pdfs/volume_scattering_probability_guiding_sa24.pdf) | [Renderer Code](https://github.com/kehanxuuu/vspg-pbrt-v4/) | [Scenes](https://drive.google.com/file/d/11mECG390H3CFszWaNu2i9QC87CDdTJAh/view?usp=sharing)
+### [Project Page](https://kehanxuuu.github.io/vspg-website/) | [Paper](https://kehanxuuu.github.io/vspg-website/static/pdfs/volume_scattering_probability_guiding_sa24.pdf) | [Renderer Code](https://github.com/kehanxuuu/vspg-pbrt-v4/) | [Scenes](https://drive.google.com/file/d/1vwbKCk770Pb2O0915yrZNGMsbE0K4qpY/view?usp=sharing)
 
 <img src="full-rendering.jpg" alt="full-rendering" width="1024"/>
 
@@ -17,7 +17,7 @@ pip install simpleimageio opencv-python numpy
 
 * Build and install the [renderer code](https://github.com/kehanxuuu/vspg-pbrt-v4/), then create a hyperlink in the root directory named `pbrt-renderer` pointing to the `install` folder.
 
-* Download the [scenes](https://drive.google.com/file/d/11mECG390H3CFszWaNu2i9QC87CDdTJAh/view?usp=sharing), then create a hyperlink in the root directory named `pbrt-scenes` pointing to this folder.
+* Download the [scenes](https://drive.google.com/file/d/1vwbKCk770Pb2O0915yrZNGMsbE0K4qpY/view?usp=sharing), then create a hyperlink in the root directory named `pbrt-scenes` pointing to this folder.
 
 * Run:
 ``` bash

@@ -31,6 +31,7 @@ pbrt = PBRTRenderer.PBRTRenderer(pbrt_dir, results_dir, scenes_dir)
 #for each scene and each scene variant
 for scene, scene_config in scenes:
     resolution = scene_config["resolution"]
+    time = scene_config["time"]
     for variant in scene_config["variants"]:
         #run each test case defined in the test cases file
         for testCase in testCases:    
