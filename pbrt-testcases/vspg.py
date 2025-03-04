@@ -1,7 +1,10 @@
 test_case_description = {
-    "title" : "VSPG tests in PBRT",
-    "short" : "Generate the transmittance buffer and compare between multiple VSPG algrithms.",
-    "long" : "This test generates the transmittance buffer first for later use in NDS+, then runs multiple VSPG algrithms for comparison"
+    "paper" : "Volume Scattering Probability Guiding",
+    "title" : "Evaluation of Volume Scattering Probability Guiding (VSPG).",
+    "short" : "Evalaution of our Volume Scattering Probability Guiding (VSPG) framework and our VSP-driven distance sampling algorithm.",
+    "long" : "The results show the outcomes for different volume rendering algorithms without (e.g., No Guiding and Dir. Guiding) \
+                and with using our volume scattering probability guiding (VSPG) framework (e.g., Dir. + VSPG ...), as well as, multiple distance sampling stategies to guided the VSP (e.g., NDS, NDS+, Resampling).\
+                For these rendering the maximum path length is set to 15 and stochastic path termination via Russian roulette is disabled.",
 }
 
 common_parameters = {
@@ -23,6 +26,8 @@ test_cases = {
             "storeTrBuffer" : ["bool", True],
             "trBufferFileName" : ["string", "$SCENE$-stored-tr-buffer.exr"],
         },
+        "skipViewer" : True,
+        "skipErrorStats" : True,
         "description" : "generate transmittance buffer to use for NDS+",
     },
     
@@ -32,6 +37,7 @@ test_cases = {
             "volumeguiding" : ["bool", False],
             "vspguiding" : ["bool", False],
         },
+        "label" : "No Guiding",
         "description" : "delta tracking",
     },
     
@@ -41,6 +47,7 @@ test_cases = {
             "volumeguiding" : ["bool", True],
             "vspguiding" : ["bool", False],
         },
+        "label" : "Dir. Guiding",
         "description" : "directional guiding for surface and volume",
     },
     
@@ -56,6 +63,7 @@ test_cases = {
             # "storeISGBuffer" : ["bool", True],
             # "isgBufferFileName" : ["string", "$SCENE$-buffer-VSPG_NDS_variance.exr"],
         },
+        "label" : "Dir. + VSPG (NDS) Var.",
         "description" : "volume scattering probability guiding with normalized distance sampling, variance-based criterion",
     },
     
@@ -73,6 +81,7 @@ test_cases = {
             # "storeISGBuffer" : ["bool", True],
             # "isgBufferFileName" : ["string", "$SCENE$-buffer-VSPG_NDS+_variance.exr"],
         },
+        "label" : "Dir. + VSPG (NDS+) Var.",
         "description" : "volume scattering probability guiding with improved version of normalized distance sampling, variance-based criterion",
     },
     
@@ -87,6 +96,7 @@ test_cases = {
             # "storeISGBuffer" : ["bool", True],
             # "isgBufferFileName" : ["string", "$SCENE$-buffer-vspg_resampling_contrib.exr"],
         },
+        "label" : "Dir. + VSPG (Resampling) Contrib.",
         "description" : "volume scattering probability guiding with the resampling method for distance sampling, contribution-based criterion",
     },
     
@@ -101,6 +111,7 @@ test_cases = {
             # "storeISGBuffer" : ["bool", True],
             # "isgBufferFileName" : ["string", "$SCENE$-buffer-vspg_resampling_variance.exr"],
         },
+        "label" : "Dir. + VSPG (Resampling) Var.",
         "description" : "volume scattering probability guiding with the resampling method for distance sampling, variance-based criterion",
     }
 

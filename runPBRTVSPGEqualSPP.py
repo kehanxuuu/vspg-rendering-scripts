@@ -30,12 +30,12 @@ pbrt = PBRTRenderer.PBRTRenderer(pbrt_dir, results_dir, scenes_dir)
 spp = 32
 
 #for each scene and each scene variant
-for scene, scene_variants, resolution, _ in scenes:
-    for variant in scene_variants:
+for scene, scene_config in scenes:
+    resolution = scene_config["resolution"]
+    for variant in scene_config["variants"]:
         #run each test case defined in the test cases file
         for testCase in testCases:    
             pbrt.runTestCase(scene, variant, resolution, testCase, budget = spp, equal_spp = True, stats = True, usedGuidedGBuffer = False)
-
 #after running all test cases for all scenes prepare the results in an interactive HTML viewer 
 viewer = ResultsViewer.ResultsViewer("./utils/webviewer")
-viewer.generateHTMLS(viewer_output_dir, results_dir, scenes_dir, scenes, testCaseDescription, testCases, showReference=False, perScene=False)
+viewer.generateHTMLS(viewer_output_dir, results_dir, scenes_dir, scenes, testCaseDescription, testCases, showReference=True, referenceTag="_ref_depth15", referenceSubFolder="reference", perScene=True, errors=["relMSE","SMAPE"])
