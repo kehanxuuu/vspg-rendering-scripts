@@ -7,7 +7,6 @@ def calculateError(refImg, img, errorType="relMSE", percentile=0.01, epsilon = 0
     if errorType == "relMSE":
         errorImg = (img-refImg)**2 / (refImg**2+epsilon)
         errorImg = np.average(errorImg, axis=2)
-        print(errorImg.shape)
     elif errorType == "MSE" or errorType == "RMSE":
         errorImg = (refImg-img)**2
         errorImg = np.average(errorImg, axis=2)
