@@ -5,9 +5,15 @@ class TestCase:
         self.name = name
         self.parameters = mergeParameters(common_parameters, data["parameters"])
         self.description = data["description"]
+        self.label = name
+        if data.__contains__("label"):
+            self.label = data["label"]
         self.skipViewer = False
         if data.__contains__("skipViewer"):
             self.skipViewer = data["skipViewer"]
+        self.skipErrorStats = False
+        if data.__contains__("skipErrorStats"):
+            self.skipErrorStats = data["skipErrorStats"]
 
 def loadTestCases(test_cases):
     testCases = []
